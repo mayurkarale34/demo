@@ -1,3 +1,6 @@
+
+import configparser
+
 def integrate():
     try:
         fin = open("modules/app_init.py", "r")
@@ -22,4 +25,12 @@ def integrate():
     except Exception as e:
         print(str(e))
 
-integrate()
+try:
+    config_object = configparser.ConfigParser()
+    config_object.read('default_config.ini')
+    with open('config.py', 'w') as f:
+        for key in config_object['DEFAULT']:
+            f.write(f"{key.upper()} = {config_object['DEFAULT'][key]}\n")
+    integrate()
+except Exception as e:
+    print(f"Exception occured : " +str(e))
