@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request
 
 from sqlalchemy import create_engine, text
 from config import DATABASE_USERNAME, DATABASE_PASSWORS, DATABASE_HOSTNAME, DATABASE_NAME
